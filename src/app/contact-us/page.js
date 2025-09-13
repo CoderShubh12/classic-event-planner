@@ -5,6 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { FaGoogle, FaMapMarkerAlt } from "react-icons/fa";
 import { GiBigDiamondRing } from "react-icons/gi";
 import { MdCelebration } from "react-icons/md";
+import Image from "next/image";
 
 // Custom Lazy Image Component with Skeleton Loader
 const LazyImage = ({ src, alt, className }) => {
@@ -12,12 +13,14 @@ const LazyImage = ({ src, alt, className }) => {
   const imgRef = useRef(null);
 
   useEffect(() => {
+    const currentImg = imgRef.current; // ✅ Copy the ref
+    if (!currentImg) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          const img = entry.target;
-          img.src = img.dataset.src;
-          observer.unobserve(img);
+          currentImg.src = currentImg.dataset.src;
+          observer.unobserve(currentImg);
         }
       },
       {
@@ -25,13 +28,11 @@ const LazyImage = ({ src, alt, className }) => {
       }
     );
 
-    if (imgRef.current) {
-      observer.observe(imgRef.current);
-    }
+    observer.observe(currentImg);
 
     return () => {
-      if (imgRef.current) {
-        observer.unobserve(imgRef.current);
+      if (currentImg) {
+        observer.unobserve(currentImg); // ✅ Use the copied ref
       }
     };
   }, []);
@@ -41,7 +42,7 @@ const LazyImage = ({ src, alt, className }) => {
       {!loaded && (
         <div className="absolute inset-0 z-10 bg-gray-300 animate-pulse rounded-lg" />
       )}
-      <img
+      <Image
         ref={imgRef}
         data-src={src}
         alt={alt}
@@ -49,6 +50,8 @@ const LazyImage = ({ src, alt, className }) => {
         className={`w-full h-full object-cover transition-opacity duration-500 ${
           loaded ? "opacity-100" : "opacity-0"
         }`}
+        width={100}
+        height={100}
       />
     </div>
   );
@@ -87,8 +90,6 @@ const ContactUsPage = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-100 via-indigo-50 to-indigo-200 font-sans py-16 px-6 mt-20">
-      {/* Tailwind CSS and Fonts */}
-      <script src="https://cdn.tailwindcss.com"></script>
       <style
         dangerouslySetInnerHTML={{
           __html: `

@@ -120,11 +120,10 @@ const Homepage = () => {
 
   return (
     <div className="bg-white text-gray-800 font-sans overflow-x-hidden">
-      <script src="https://cdn.tailwindcss.com"></script>
       <style
         dangerouslySetInnerHTML={{
           __html: `
-            @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+            @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500;600&display=swap");
             .font-playfair { font-family: 'Playfair Display', serif; }
             .font-inter { font-family: 'Inter', sans-serif; }
             body { overflow-x: hidden; }
@@ -219,7 +218,7 @@ const Homepage = () => {
                 Day-Of Coordination
               </h3>
               <p className="text-gray-600 text-sm sm:text-base">
-                Relax and enjoy your day. We'll handle all logistics…
+                Relax and enjoy your day. We will handle all logistics…
               </p>
             </motion.div>
             <motion.div
@@ -299,8 +298,8 @@ const Homepage = () => {
             viewport={{ once: true, amount: 0.5 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Get in touch with us today for a complimentary consultation. We'd
-            love to hear about your vision.
+            Get in touch with us today for a complimentary consultation. We
+            would love to hear about your vision.
           </motion.p>
           <Link href="/contact-us" passHref>
             <motion.p
