@@ -1,9 +1,9 @@
-import Homepage from "./HomePage/page";
+import HomePage3 from "./homepage3.js/page";
 
 export default function Home() {
   return (
     <>
-      <Homepage />
+      <HomePage3 />
     </>
   );
 }

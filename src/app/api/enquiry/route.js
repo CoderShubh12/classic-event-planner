@@ -1,5 +1,5 @@
 import dbConnect from "@/lib/dbConnect";
-import Inquiry from "@/models/inquiry.model";
+import Inquiry from "@/models/contact.model";
 import { NextResponse } from "next/server";
 
 export async function POST(req) {

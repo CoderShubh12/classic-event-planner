@@ -45,15 +45,16 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
+          {/* Quick Links */}
           <div className="text-center sm:text-left space-y-4">
-            <h4 className="text-lg font-semibold text-white mb-6">
+            <h4 className="text-lg font-semibold text-white mb-6  text-gray-400 ">
               Quick Links
             </h4>
-            <ul className="space-y-3 text-gray-400 font-inter text-sm max-w-xs mx-auto sm:mx-0">
+            <ul className="space-y-3 font-inter text-sm max-w-xs mx-auto sm:mx-0  text-gray-400 ">
               <li>
                 <Link
                   href="/"
-                  className="hover:text-yellow-400 transition block"
+                  className="hover:text-yellow-400 transition block px-2 py-1  text-gray-400 "
                 >
                   Home
                 </Link>
@@ -61,7 +62,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/services"
-                  className="hover:text-yellow-400 transition block"
+                  className="hover:text-yellow-400 transition block px-2 py-1  text-gray-400 "
                 >
                   Services
                 </Link>
@@ -69,7 +70,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="/contact-us"
-                  className="hover:text-yellow-400 transition block"
+                  className="hover:text-yellow-400 transition block px-2 py-1  text-gray-400 "
                 >
                   Contact
                 </Link>
@@ -78,7 +79,7 @@ const Footer = () => {
                 {/* Privacy Policy triggers modal */}
                 <button
                   onClick={() => setShowPrivacy(true)}
-                  className="hover:text-yellow-400 transition text-left p-0 m-0 font-inter text-gray-400 w-full text-left"
+                  className="hover:text-yellow-400 transition text-left p-0 m-0 font-inter text-gray-400 w-full text-left block px-2 py-1 bg-transparent border-none"
                 >
                   Privacy Policy
                 </button>
@@ -86,7 +87,7 @@ const Footer = () => {
               <li>
                 <Link
                   href="#"
-                  className="hover:text-yellow-400 transition block"
+                  className="hover:text-yellow-400 transition block px-2 py-1"
                 >
                   Terms of Service
                 </Link>

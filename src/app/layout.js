@@ -18,7 +18,7 @@ export default function RootLayout({ children }) {
         <meta charSet="UTF-8" />
       </head>
       <body>
-        <div className="w-full min-h-screen overflow-x-hidden">
+        <div className="w-full min-h-screen ">
           <Navbar /> {/* ✅ Correct – now inside <body> */}
           {children}
           <Footer />

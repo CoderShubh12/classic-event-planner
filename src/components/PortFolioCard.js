@@ -1,12 +1,14 @@
-import React from "react";
+// components/PortFolioCard.js
+"use client";
+
+import React, { Suspense } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-// Portfolio card data in one variable
 const portfolioCards = [
   {
     title: "Autumn Blossom",
-    img: "/assets/stage1.jpg",
+    img: "/assets/flowersetup.jpg",
     desc: "An autumn themed wedding",
   },
   {
@@ -31,7 +33,7 @@ const portfolioCards = [
   },
   {
     title: "Mountain Escape",
-    img: "/assets/deco2.jpg",
+    img: "/assets/jungle.jpg",
     desc: "A mountain retreat wedding",
   },
   {
@@ -41,12 +43,12 @@ const portfolioCards = [
   },
   {
     title: "Sunset Vows",
-    img: "/assets/stage5.jpg",
+    img: "/assets/stage1.jpg",
     desc: "A sunset wedding ceremony",
   },
 ];
 
-// Animated Card Component
+// Animated Card Component with lazy loading skeleton
 const AnimatedCard = ({ title, img, desc }) => (
   <motion.div
     initial={{ y: 0, boxShadow: "0 2px 20px 0 rgba(0,0,0,0.07)" }}
@@ -58,13 +60,20 @@ const AnimatedCard = ({ title, img, desc }) => (
     }}
     className="bg-white rounded-xl overflow-hidden shadow-lg transition-all duration-300 cursor-pointer flex flex-col items-center group"
   >
-    <Image
-      src={img}
-      alt={title}
-      className="object-cover w-full aspect-square group-hover:scale-105 transition-transform duration-500"
-      width={300}
-      height={300}
-    />
+    <Suspense
+      fallback={
+        <div className="w-full aspect-square bg-gray-200 animate-pulse rounded-t-xl" />
+      }
+    >
+      <Image
+        src={img}
+        alt={title}
+        className="object-cover w-full aspect-square group-hover:scale-105 transition-transform duration-500"
+        width={300}
+        height={300}
+        loading="lazy"
+      />
+    </Suspense>
     <div className="p-4 text-center">
       <h3 className="font-semibold text-lg mb-2">{title}</h3>
       <p className="text-gray-500 text-sm">{desc}</p>
