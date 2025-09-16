@@ -22,10 +22,10 @@ export default function HomePage3() {
   const y = useTransform(scrollYProgress, [0, 1], [-40, 90]);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-pink-50 to-purple-100 mt-10">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-pink-50 to-purple-100 ">
       <div
         ref={containerRef}
-        className="relative w-full h-[90vh] flex items-center justify-center overflow-hidden"
+        className="relative w-full h-[100vh] flex items-center justify-center overflow-hidden"
       >
         {useVideo ? (
           <video
@@ -55,9 +55,9 @@ export default function HomePage3() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.3, ease: "easeOut" }}
-            className="text-4xl sm:text-5xl font-bold mb-4 leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)] whitespace-nowrap"
+            className="text-4xl sm:text-5xl font-bold mb-20 leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)] whitespace-nowrap"
           >
-            Dream Weddings, Perfectly Planned
+            Dream Weddings & Events, Perfectly Planned
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 32 }}
@@ -65,11 +65,12 @@ export default function HomePage3() {
             transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
             className="text-base sm:text-lg md:text-xl mt-6 max-w-xl mx-auto mb-8 drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]"
           >
-            Let us turn your wedding day into a magical, unforgettable
+            Let us turn your special day or event into a magical, unforgettable
             celebration.
           </motion.p>
+
           <motion.a
-            href="#contact"
+            href="/contact-us"
             whileHover={{ scale: 1.06, boxShadow: "0 2px 20px #D946EF99" }}
             className="bg-pink-600 hover:bg-pink-700 text-white font-semibold py-3 px-6 sm:py-3 sm:px-8 rounded shadow-lg transition-all inline-block"
           >
