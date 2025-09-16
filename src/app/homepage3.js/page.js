@@ -55,15 +55,16 @@ export default function HomePage3() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.3, ease: "easeOut" }}
-            className="text-4xl sm:text-5xl font-bold mb-20 leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)] whitespace-nowrap"
+            className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-20 sm:mb-20 leading-snug sm:leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)] whitespace-normal px-4 text-center max-w-full sm:max-w-3xl mx-auto"
           >
             Dream Weddings & Events, Perfectly Planned
           </motion.h1>
+
           <motion.p
             initial={{ opacity: 0, y: 32 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3, ease: "easeOut" }}
-            className="text-base sm:text-lg md:text-xl mt-6 max-w-xl mx-auto mb-8 drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)]"
+            className="text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl mt-4 max-w-full sm:max-w-xl mx-auto mb-8 drop-shadow-[0_1px_4px_rgba(0,0,0,0.6)] px-4 text-center leading-relaxed"
           >
             Let us turn your special day or event into a magical, unforgettable
             celebration.

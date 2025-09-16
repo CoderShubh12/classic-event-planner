@@ -1,4 +1,3 @@
-// components/Navbar.tsx
 "use client";
 
 import { useState, useEffect } from "react";
@@ -9,7 +8,6 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
-  // Detect scroll to toggle navbar background opacity and shadow
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 30);
@@ -18,14 +16,25 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleLinkClick = () => {
+    setIsOpen(false);
+  };
+
+  const navItems = [
+    { href: "/", text: "Home" },
+    { href: "/services", text: "Services" },
+    { href: "/about", text: "About" },
+    { href: "/testimonials", text: "Testimonials" },
+    { href: "/contact-us", text: "Contact" },
+  ];
+
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-colors duration-500 backdrop-blur-md
-        ${
-          scrolled
-            ? "bg-cyan-950 bg-opacity-20 shadow-lg"
-            : "bg-transparent bg-opacity-30"
-        }`}
+      className={`fixed top-0 left-0 w-full z-50 transition-colors duration-500 backdrop-blur-md ${
+        scrolled
+          ? "bg-cyan-950 bg-opacity-20 shadow-lg"
+          : "bg-transparent bg-opacity-30"
+      }`}
     >
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo */}
@@ -40,15 +49,9 @@ const Navbar = () => {
           />
         </Link>
 
-        {/* Desktop menu */}
+        {/* Desktop menu - show all */}
         <div className="hidden md:flex space-x-10 text-white font-semibold">
-          {[
-            { href: "/", text: "Home" },
-            { href: "/services", text: "Services" },
-            { href: "/about", text: "About" },
-            { href: "/testimonials", text: "Testimonials" },
-            { href: "/contact-us", text: "Contact" },
-          ].map(({ href, text }) => (
+          {navItems.map(({ href, text }) => (
             <Link
               key={href}
               href={href}
@@ -85,30 +88,33 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - show only Testimonials and Contact */}
       <div
-        className={`md:hidden fixed inset-0 bg-gray-900 bg-opacity-95 backdrop-blur-sm flex flex-col items-center justify-center space-y-8 text-2xl font-semibold text-white transition-opacity duration-300 ease-in-out ${
+        className={`md:hidden fixed inset-0 bg-gray-900 bg-opacity-95 backdrop-blur-sm flex flex-col items-center justify-center space-y-6 text-2xl font-semibold text-white transition-opacity duration-300 ease-in-out ${
           isOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
         }`}
       >
-        {[
-          { href: "/", text: "Home" },
-          { href: "/services", text: "Services" },
-          { href: "/about", text: "About" },
-          { href: "/testimonials", text: "Testimonials" },
-          { href: "/contact-us", text: "Contact" },
-        ].map(({ href, text }) => (
-          <Link
-            key={href}
-            href={href}
-            onClick={() => setIsOpen(false)}
-            className="hover:text-indigo-300 px-4 py-2 rounded transition-colors duration-300"
-          >
-            {text}
-          </Link>
-        ))}
+        {/* Mobile Menu - show all nav items with smaller font */}
+        <div
+          className={`md:hidden fixed inset-0 bg-gray-900 bg-opacity-95 backdrop-blur-sm flex flex-col items-center justify-center space-y-3 text-base font-semibold text-white transition-opacity duration-300 ease-in-out px-4 ${
+            isOpen
+              ? "opacity-100 pointer-events-auto"
+              : "opacity-0 pointer-events-none"
+          }`}
+        >
+          {navItems.map(({ href, text }) => (
+            <Link
+              key={href}
+              href={href}
+              onClick={handleLinkClick}
+              className="hover:text-indigo-300 w-full max-w-xs text-center px-4 py-2 rounded bg-gray-800 bg-opacity-30 transition-colors duration-300"
+            >
+              {text}
+            </Link>
+          ))}
+        </div>
       </div>
     </nav>
   );
