@@ -3,7 +3,12 @@
 
 import React, { useRef, Suspense } from "react";
 import Image from "next/image";
-import { HiCamera, HiLocationMarker, HiOfficeBuilding } from "react-icons/hi";
+import {
+  HiCamera,
+  HiLocationMarker,
+  HiOfficeBuilding,
+  HiCalendar,
+} from "react-icons/hi";
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import TestimonialCarousel from "@/components/TestimonilaCarosel";
@@ -23,7 +28,7 @@ export default function HomePage3() {
   const y = useTransform(scrollYProgress, [0, 1], [-40, 90]);
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-pink-50 to-purple-100 ">
+    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-br from-purple-100 via-pink-100 to-rose-100">
       <div
         ref={containerRef}
         className="relative w-full h-[100vh] flex items-center justify-center overflow-hidden"
@@ -86,15 +91,31 @@ export default function HomePage3() {
         {/* Animated Services Section */}
         {/* Animated Services Section */}
         <section className="min-h-[70vh] flex items-center bg-gray-50 py-8 px-2 sm:p-8 md:p-16 mt-10">
-          <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8">
             {/* Existing service items */}
+            <motion.div
+              className="bg-white rounded-lg shadow-xl p-4 sm:p-8 text-center"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+            >
+              <HiCamera className="h-12 w-12 sm:h-16 sm:w-16 text-indigo-500 mx-auto mb-4" />
+              <h3 className="text-lg sm:text-2xl font-semibold font-inter mb-2 text-gray-900">
+                Full-Service Planning
+              </h3>
+              <p className="text-gray-600 text-sm sm:text-base">
+                From concept to completion, we handle every detail so you don't
+                have to.
+              </p>
+            </motion.div>
+
             <motion.div
               className="bg-white rounded-lg shadow-xl p-4 sm:p-8 text-center"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              <HiCamera className="h-12 w-12 sm:h-16 sm:w-16 text-indigo-500 mx-auto mb-4" />
+              <HiCalendar className="h-12 w-12 sm:h-16 sm:w-16 text-indigo-500 mx-auto mb-4" />
               <h3 className="text-lg sm:text-2xl font-semibold font-inter mb-2 text-gray-900">
                 Day-Of Coordination
               </h3>
@@ -150,6 +171,15 @@ export default function HomePage3() {
 
         {/* Testimonials Section with background & border */}
         <section className="relative w-full py-14 px-4 bg-white rounded-xl shadow-md border border-pink-200 mt-10">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-2">
+              Happy Faces
+            </h2>
+            <p className="text-gray-600 text-lg sm:text-xl max-w-3xl mx-auto">
+              Don't just take our word for it—see what our clients have to say
+              about their experience.
+            </p>
+          </div>
           <Suspense
             fallback={
               <div className="w-full h-48 flex items-center justify-center">
