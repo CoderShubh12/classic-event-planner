@@ -120,7 +120,7 @@ const AboutUs = () => {
       name: "Raj Rai",
       title: "Creative Director",
       bio: "Raj's expertise lies in bringing narratives to life through design. He thrives on finding unique elements and unexpected color palettes.",
-      image: "/assets/raj.jpg",
+      image: "/assets/Raj.jpg",
     },
     {
       name: "Maria Santos",

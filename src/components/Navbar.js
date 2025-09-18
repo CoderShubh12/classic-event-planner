@@ -1,24 +1,43 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const mobileMenuRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 30);
     };
+    setIsOpen(false);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [scrolled]);
 
   const handleLinkClick = () => {
     setIsOpen(false);
   };
+  useEffect(() => {
+    if (!isOpen) return;
+
+    function handleClickOutside(event) {
+      if (
+        mobileMenuRef.current &&
+        !mobileMenuRef.current.contains(event.target)
+      ) {
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isOpen]);
 
   const navItems = [
     { href: "/", text: "Home" },
@@ -49,13 +68,16 @@ const Navbar = () => {
           />
         </Link>
 
-        {/* Desktop menu - show all */}
+        {/* Desktop menu */}
         <div className="hidden md:flex space-x-10 text-white font-semibold">
           {navItems.map(({ href, text }) => (
             <Link
               key={href}
               href={href}
-              className="hover:text-indigo-300 transition-colors duration-300"
+              // className="hover:text-indigo-300 transition-colors duration-300"
+              className="w-full md:w-auto text-center px-6 py-3 rounded-lg text-lg md:text-base font-semibold
+  bg-indigo-900 bg-opacity-85 backdrop-blur-lg text-white shadow-lg
+  hover:bg-cyan-700 hover:text-yellow-300 transition-colors duration-200"
             >
               {text}
             </Link>
@@ -88,33 +110,59 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu - show only Testimonials and Contact */}
+      {/* Mobile Menu */}
+      {/* Improved mobile menu with custom background */}
+      {/* Mobile Menu */}
       <div
-        className={`md:hidden fixed inset-0 bg-gray-900 bg-opacity-95 backdrop-blur-sm flex flex-col items-center justify-center space-y-6 text-2xl font-semibold text-white transition-opacity duration-300 ease-in-out ${
-          isOpen
-            ? "opacity-100 pointer-events-auto"
-            : "opacity-0 pointer-events-none"
-        }`}
+        className={`md:hidden fixed inset-0 flex flex-col items-center justify-center
+    transition-all duration-300 z-40
+    ${
+      isOpen
+        ? "opacity-100 pointer-events-auto"
+        : "opacity-0 pointer-events-none"
+    }
+  `}
+        style={{
+          background:
+            "linear-gradient(145deg, rgba(10,36,99,0.95) 70%, rgba(25,192,212,0.92) 100%)",
+          backdropFilter: "blur(6px)",
+          paddingTop: "64px",
+        }}
+        ref={mobileMenuRef}
       >
-        {/* Mobile Menu - show all nav items with smaller font */}
-        <div
-          className={`md:hidden fixed inset-0 bg-gray-900 bg-opacity-95 backdrop-blur-sm flex flex-col items-center justify-center space-y-3 text-base font-semibold text-white transition-opacity duration-300 ease-in-out px-4 ${
-            isOpen
-              ? "opacity-100 pointer-events-auto"
-              : "opacity-0 pointer-events-none"
-          }`}
+        {/* Close button at top-right inside menu */}
+        {/* <button
+          onClick={() => setIsOpen(false)}
+          aria-label="Close menu"
+          className="absolute top-4 right-4 text-white hover:text-yellow-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 rounded"
         >
-          {navItems.map(({ href, text }) => (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-8 w-8"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            strokeWidth={2}
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button> */}
+
+        {isOpen &&
+          navItems.map(({ href, text }) => (
             <Link
               key={href}
               href={href}
               onClick={handleLinkClick}
-              className="hover:text-indigo-300 w-full max-w-xs text-center px-4 py-2 rounded bg-gray-800 bg-opacity-30 transition-colors duration-300"
+              className="w-full max-w-xs text-center px-4 py-2 my-1 rounded text-lg font-medium hover:bg-cyan-800 hover:text-indigo-300 transition-colors duration-200 bg-gray-800 bg-opacity-40 text-white"
             >
               {text}
             </Link>
           ))}
-        </div>
       </div>
     </nav>
   );

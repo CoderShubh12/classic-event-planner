@@ -3,11 +3,12 @@
 
 import React, { useRef, Suspense } from "react";
 import Image from "next/image";
+import { HiCamera, HiLocationMarker, HiOfficeBuilding } from "react-icons/hi";
 
 import { motion, useScroll, useTransform } from "framer-motion";
 import TestimonialCarousel from "@/components/TestimonilaCarosel";
 import PortfolioGrid from "@/components/PortFolioCard";
-import { HiHeart, HiCamera, HiLocationMarker } from "react-icons/hi";
+
 import Link from "next/link";
 
 export default function HomePage3() {
@@ -85,62 +86,53 @@ export default function HomePage3() {
         {/* Animated Services Section */}
         {/* Animated Services Section */}
         <section className="min-h-[70vh] flex items-center bg-gray-50 py-8 px-2 sm:p-8 md:p-16 mt-10">
-          <div className="container mx-auto">
-            <motion.h2
-              className="text-2xl sm:text-4xl md:text-5xl font-playfair font-bold text-center mb-8 sm:mb-12"
+          <div className="grid grid-cols-1 sm:grid-cols-4 gap-4 sm:gap-8">
+            {/* Existing service items */}
+            <motion.div
+              className="bg-white rounded-lg shadow-xl p-4 sm:p-8 text-center"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.5 }}
-              transition={{ duration: 0.8 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Our Services
-            </motion.h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8">
-              <motion.div
-                className="bg-white rounded-lg shadow-xl p-4 sm:p-8 text-center"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.2 }}
-              >
-                <HiHeart className="h-12 w-12 sm:h-16 sm:w-16 text-indigo-500 mx-auto mb-4" />
-                <h3 className="text-lg sm:text-2xl font-semibold font-inter mb-2">
-                  Full-Service Planning
-                </h3>
-                <p className="text-gray-600 text-sm sm:text-base">
-                  From concept to execution, we manage every detail…
-                </p>
-              </motion.div>
+              <HiCamera className="h-12 w-12 sm:h-16 sm:w-16 text-indigo-500 mx-auto mb-4" />
+              <h3 className="text-lg sm:text-2xl font-semibold font-inter mb-2 text-gray-900">
+                Day-Of Coordination
+              </h3>
+              <p className="text-gray-600 text-sm sm:text-base">
+                Relax and enjoy your day. We will handle all logistics…
+              </p>
+            </motion.div>
 
-              <motion.div
-                className="bg-white rounded-lg shadow-xl p-4 sm:p-8 text-center"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.4 }}
-              >
-                <HiCamera className="h-12 w-12 sm:h-16 sm:w-16 text-indigo-500 mx-auto mb-4" />
-                <h3 className="text-lg sm:text-2xl font-semibold font-inter mb-2">
-                  Day-Of Coordination
-                </h3>
-                <p className="text-gray-600 text-sm sm:text-base">
-                  Relax and enjoy your day. We will handle all logistics…
-                </p>
-              </motion.div>
+            <motion.div
+              className="bg-white rounded-lg shadow-xl p-4 sm:p-8 text-center"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <HiLocationMarker className="h-12 w-12 sm:h-16 sm:w-16 text-indigo-500 mx-auto mb-4" />
+              <h3 className="text-lg sm:text-2xl font-semibold font-inter mb-2 text-gray-900">
+                Destination Weddings
+              </h3>
+              <p className="text-gray-600 text-sm sm:text-base">
+                Dreaming of a wedding abroad? We have the expertise…
+              </p>
+            </motion.div>
 
-              <motion.div
-                className="bg-white rounded-lg shadow-xl p-4 sm:p-8 text-center"
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8, delay: 0.6 }}
-              >
-                <HiLocationMarker className="h-12 w-12 sm:h-16 sm:w-16 text-indigo-500 mx-auto mb-4" />
-                <h3 className="text-lg sm:text-2xl font-semibold font-inter mb-2">
-                  Destination Weddings
-                </h3>
-                <p className="text-gray-600 text-sm sm:text-base">
-                  Dreaming of a wedding abroad? We have the expertise…
-                </p>
-              </motion.div>
-            </div>
+            <motion.div
+              className="bg-white rounded-lg shadow-xl p-4 sm:p-8 text-center"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.8 }}
+            >
+              <HiOfficeBuilding className="h-12 w-12 sm:h-16 sm:w-16 text-indigo-500 mx-auto mb-4" />
+              <h3 className="text-lg sm:text-2xl font-semibold font-inter mb-2 text-gray-900">
+                Corporate Events
+              </h3>
+              <p className="text-gray-600 text-sm sm:text-base">
+                Professional planning and execution for corporate meetings,
+                conferences, and celebrations.
+              </p>
+            </motion.div>
           </div>
         </section>
         {/* Animated Portfolio Section */}
