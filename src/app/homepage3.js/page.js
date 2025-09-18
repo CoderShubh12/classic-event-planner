@@ -104,7 +104,7 @@ export default function HomePage3() {
                 Full-Service Planning
               </h3>
               <p className="text-gray-600 text-sm sm:text-base">
-                From concept to completion, we handle every detail so you don't
+                From concept to completion, we handle every detail so you do not
                 have to.
               </p>
             </motion.div>
@@ -176,7 +176,7 @@ export default function HomePage3() {
               Happy Faces
             </h2>
             <p className="text-gray-600 text-lg sm:text-xl max-w-3xl mx-auto">
-              Don't just take our word for it—see what our clients have to say
+              Do not just take our word for it—see what our clients have to say
               about their experience.
             </p>
           </div>
